@@ -1,0 +1,30 @@
+server:
+  port: 5000
+
+spring:
+  datasource:
+    url: jdbc:postgresql://dpg-d4jkaa6r433s739f8520-a.oregon-postgres.render.com:5432/terabia
+    username: mimche
+    password: rYWEcxpCaLWaH5YVnThJwdc4ASV6pkM8
+    hikari:
+      maximum-pool-size: 10
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: true
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 30MB
+      max-request-size: 50MB
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.hibernate.SQL: DEBUG
