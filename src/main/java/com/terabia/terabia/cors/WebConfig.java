@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**") // Apply to all endpoints
+        registry.addMapping("/**") // Apply to all endpoints
                 .allowedOriginPatterns(
                         "https://terabia.onrender.com",
                         "http://localhost:3000",
