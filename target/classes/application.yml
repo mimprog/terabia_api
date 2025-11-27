@@ -4,6 +4,7 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://dpg-d4jkaa6r433s739f8520-a.oregon-postgres.render.com:5432/terabia
+    url: 
     username: mimche
     password: rYWEcxpCaLWaH5YVnThJwdc4ASV6pkM8
     hikari:

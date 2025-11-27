@@ -14,6 +14,7 @@ com/terabia/terabia/services/UserService.class
 com/terabia/terabia/controllers/ProductCategoryController.class
 com/terabia/terabia/models/Role.class
 com/terabia/terabia/request/SupplierRequest.class
+com/terabia/terabia/config/DotenvConfig.class
 com/terabia/terabia/models/Supplier.class
 com/terabia/terabia/models/Status.class
 com/terabia/terabia/config/JwtAuthenticationFilter.class

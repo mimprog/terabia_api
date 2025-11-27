@@ -38,6 +38,7 @@
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/controllers/StockController.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/models/Supplier.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/repositories/ProductCategoryRepository.java
+/home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/config/DotenvConfig.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/auth/RegisterRequest.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/auth/AuthResponse.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/controllers/OrderController.java
