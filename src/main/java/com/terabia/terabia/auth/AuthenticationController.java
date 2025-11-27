@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(
-        origins = "https://magazina.onrender.com", // Frontend URL
+        origins = "https://terabia.onrender.com", // Frontend URL
         allowedHeaders = "*", // Allow all headers
         methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.OPTIONS}, // Allowed methods
         allowCredentials = "true" // Allow credentials like cookies
