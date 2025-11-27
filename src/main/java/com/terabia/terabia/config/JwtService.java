@@ -96,63 +96,6 @@ public class JwtService {
         }
     }
 
-
-
-    /*public String getUsernameFromToken(String token) {
-        Claims claims = Jwts
-                .parserBuilder()
-                .setSigningKey(SECRET_KEY)
-                .build()
-                .parseClaimsJws(token)
-                .getBody();
-
-        // Extract the username instead of ID if it's stored in the 'username' field
-        String username = claims.get("username", String.class);
-        System.out.println("Extracted username: " + username);
-
-        return username;
-    }
-
-
-    public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
-    }
-
-    public String generateToken(
-            Map <String, Object> extraClaims,
-            UserDetails userDetails
-    ) {
-        System.out.println(userDetails);
-        return Jwts
-                .builder()
-                .setClaims(extraClaims)
-                .setSubject(userDetails.getUsername())
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 90))
-                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
-                .compact();
-    }
-
-    public String generateToken(
-            Map<String, Object> extraClaims,
-            String userId,
-            String username,
-            String role
-    ) {
-        // Add user-specific claims
-        extraClaims.put("userId", userId);
-        extraClaims.put("username", username);
-        extraClaims.put("role", role);
-
-        return Jwts
-                .builder()
-                .setClaims(extraClaims) // Set all claims
-                .setSubject(userId)
-                .setIssuedAt(new Date(System.currentTimeMillis())) // Token issue time
-                .setExpiration(new Date(System.currentTimeMillis() + 1000L * 60 * 60 * 24 * 90)) // Token expiration time
-                .signWith(getSignInKey(), SignatureAlgorithm.HS256) // Sign with key and algorithm
-                .compact(); // Build the token
-    }*/
     public boolean isTokenValid(String token , UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername())) && !isTokenExpired(token);

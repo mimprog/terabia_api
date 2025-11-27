@@ -12,11 +12,11 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedOriginPatterns(
                         "https://terabia.onrender.com",
                         "http://localhost:3000",
-                        "http://localhost:5173" // Vite default port
+                        "http://localhost:5173"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH")
                 .allowedHeaders("*")
                 .allowCredentials(true)
-                .maxAge(3600); // Cache preflight response for 1 hour
+                .maxAge(3600);
     }
 }
