@@ -10,12 +10,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@CrossOrigin(
-        origins = "https://terabia.onrender.com", // Frontend URL
-        allowedHeaders = "*", // Allow all headers
-        methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.OPTIONS}, // Allowed methods
-        allowCredentials = "true" // Allow credentials like cookies
-)
+
 @RestController
 @RequestMapping("/api/v1/movement-types")
 public class MovementTypeController {

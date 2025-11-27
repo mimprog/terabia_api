@@ -52,6 +52,7 @@
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/repositories/StockRepository.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/error/Validation.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/controllers/SupplierController.java
+/home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/config/CorsConfig.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/auth/AuthenticationService.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/controllers/UserController.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/repositories/CustomerRepository.java
@@ -60,7 +61,6 @@
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/models/MovementType.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/repositories/CategoryRepository.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/TerabiaApplication.java
-/home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/cors/WebConfig.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/repositories/UserRepository.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/models/PaymentMethod.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/request/OrderItemRequest.java

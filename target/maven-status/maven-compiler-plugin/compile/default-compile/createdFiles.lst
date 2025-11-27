@@ -39,7 +39,6 @@ com/terabia/terabia/config/JwtService.class
 com/terabia/terabia/models/Product.class
 com/terabia/terabia/auth/AuthenticationService.class
 com/terabia/terabia/auth/AuthenticationRequest.class
-com/terabia/terabia/cors/WebConfig.class
 com/terabia/terabia/request/OrderWithCustomerRequest.class
 com/terabia/terabia/models/PaymentMethod.class
 com/terabia/terabia/repositories/CategoryRepository.class
@@ -56,6 +55,7 @@ com/terabia/terabia/services/SupplierService.class
 com/terabia/terabia/models/ProductImage.class
 com/terabia/terabia/repositories/UserRepository.class
 com/terabia/terabia/repositories/SupplierRepository.class
+com/terabia/terabia/config/CorsConfig.class
 com/terabia/terabia/TerabiaApplication.class
 com/terabia/terabia/request/OrderRequest.class
 com/terabia/terabia/models/Permission.class

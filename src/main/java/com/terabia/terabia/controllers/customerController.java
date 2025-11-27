@@ -12,12 +12,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
-@CrossOrigin(
-        origins = "https://terabia.onrender.com", // Frontend URL
-        allowedHeaders = "*", // Allow all headers
-        methods = {RequestMethod.POST, RequestMethod.GET, RequestMethod.OPTIONS}, // Allowed methods
-        allowCredentials = "true" // Allow credentials like cookies
-)
+
 @RestController
 @RequestMapping("/api/v1/customers")
 public class customerController {
