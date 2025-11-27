@@ -8,11 +8,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // Apply to all endpoints
-                //.allowedOriginPatterns("http://localhost:3000") // Allow all origins
-                .allowedOriginPatterns("https://terabia.onrender.com")
-                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Allow these methods
-                .allowedHeaders("*") // Allow all headers
-                .allowCredentials(true); // Allow credentials
+        registry.addMapping("/api/**") // Apply to all endpoints
+                .allowedOriginPatterns(
+                        "https://terabia.onrender.com",
+                        "http://localhost:3000",
+                        "http://localhost:5173" // Vite default port
+                )
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH")
+                .allowedHeaders("*")
+                .allowCredentials(true)
+                .maxAge(3600); // Cache preflight response for 1 hour
     }
 }
