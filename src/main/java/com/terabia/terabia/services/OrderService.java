@@ -53,11 +53,8 @@ public class OrderService {
         return orderItemRepository.findById(id);
     }
 
-    // REMOVE @PostMapping from here - this is service method
     public Order createOrder(String token, List<OrderItem> orderItems, String paymentMethod, CustomerRequest customerDetails) {
         try {
-            System.out.println("=== STARTING ORDER CREATION ===");
-
             String userId = jwtService.getUserIdFromToken(token);
             System.out.println("User ID from token: " + userId);
 

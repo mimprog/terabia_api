@@ -22,6 +22,7 @@ public class AuthenticationResponse {
     private String phone;
     private String token;
     private User user;
+    private Integer id;
 
     @Enumerated(EnumType.STRING)
     private Role role;

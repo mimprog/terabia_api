@@ -100,6 +100,7 @@ public class AuthenticationService {
             var jwtToken = jwtService.generateToken(user);
 
             return AuthenticationResponse.builder()
+                    .id(user.getId())
                     .firstname(user.getFirstname())
                     .lastname(user.getLastname())
                     .email(user.getEmail())

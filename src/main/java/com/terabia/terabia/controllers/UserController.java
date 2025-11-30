@@ -1,5 +1,6 @@
 package com.terabia.terabia.controllers;
 
+import com.terabia.terabia.chat.ChatService;
 import com.terabia.terabia.models.User;
 import com.terabia.terabia.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,24 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private ChatService chatService;
+
     @GetMapping
     public List <User> getAllUser() {
         return userService.getAllUsers();
     }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<User>> searchUsers(
+            @RequestParam("q") String query,
+            @RequestHeader("Authorization") String token) {
+
+        List<User> users = chatService.searchUsers(query);
+
+        return ResponseEntity.ok(users);
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getUserById(@PathVariable Integer id) {
