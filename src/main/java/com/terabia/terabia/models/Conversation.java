@@ -17,9 +17,9 @@ public class Conversation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idConversation;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany
     @JoinTable(
-            name = "participation_conversation",
+            name = "participation_conversations",
             joinColumns = @JoinColumn(name = "idConversation"),
             inverseJoinColumns = @JoinColumn(name = "idUser")
     )

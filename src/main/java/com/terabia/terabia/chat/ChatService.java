@@ -1,5 +1,6 @@
 package com.terabia.terabia.chat;
 
+import com.terabia.terabia.dto.ConversationSummaryDto;
 import com.terabia.terabia.dto.EnvoiMessageDto;
 import com.terabia.terabia.enums.StatutMessage;
 import com.terabia.terabia.models.Conversation;
@@ -34,43 +35,23 @@ public class ChatService {
     }
 
     @Transactional
-    public Message envoyerMessage(Integer idExpediteur, EnvoiMessageDto dto){
-
-        // DEBUG LOG (helpful for future errors)
-        System.out.println("=== ENVOI MESSAGE ===");
-        System.out.println("idExpediteur = " + idExpediteur);
-        System.out.println("idDestinataire = " + dto.getIdDestinataire());
-        System.out.println("contenu = '" + dto.getContenu() + "'");
-
-        // 1. Check users
+    public Message envoyerMessage(Integer idExpediteur, Long idConversation, EnvoiMessageDto dto) {
         User expediteur = utilisateurRepository.findById(idExpediteur)
                 .orElseThrow(() -> new RuntimeException("Expéditeur introuvable"));
 
-        User destinataire = utilisateurRepository.findById(dto.getIdDestinataire())
-                .orElseThrow(() -> new RuntimeException("Destinataire introuvable"));
+        Conversation conversation = conversationRepository.findById(idConversation)
+                .orElseThrow(() -> new RuntimeException("Conversation introuvable"));
 
-        // 2. Find or create conversation
-        Conversation conversation = conversationRepository
-                .findConversationEntreDeuxUsers(idExpediteur, dto.getIdDestinataire())
-                .orElseGet(() -> {
-
-                    Conversation newConv = new Conversation();
-                    newConv.setParticipants(Arrays.asList(expediteur, destinataire));
-
-                    return conversationRepository.save(newConv);
-                });
-
-        // 3. Create message
         Message message = new Message();
-        message.setContenu(dto.getContenu() != null ? dto.getContenu() : ""); // prevent null
+        message.setContenu(dto.getContenu() != null ? dto.getContenu() : "");
         message.setDateEnvoi(LocalDateTime.now());
         message.setStatut(StatutMessage.ENVOYE);
-
         message.setEmetteur(expediteur);
         message.setConversation(conversation);
 
         return messageRepository.save(message);
     }
+
 
     public List<Conversation> getMesConversations(Integer idUser){
         return conversationRepository.findByParticipantsId(idUser);
@@ -106,5 +87,10 @@ public class ChatService {
         response.put("idConversation", conversation.getIdConversation());
         return response;
     }
+
+    public List<ConversationSummaryDto> getConversationsForUser(Integer userId) {
+        return conversationRepository.findConversationsForUser(userId);
+    }
+
 
 }

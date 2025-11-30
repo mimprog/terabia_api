@@ -68,12 +68,7 @@ public class User implements UserDetails {
     @JsonManagedReference("user-updated-stock")
     private List <Stock> updatedStocks;
 
-    @ManyToMany
-    @JoinTable(
-            name="participation_conversation",
-            joinColumns= @JoinColumn(name="id")
-    )
-    private List <Conversation> conversations;
+
     public Integer getId() {
         return id;
     }

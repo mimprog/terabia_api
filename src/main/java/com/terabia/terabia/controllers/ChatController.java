@@ -1,6 +1,7 @@
 package com.terabia.terabia.controllers;
 
 import com.terabia.terabia.config.JwtService;
+import com.terabia.terabia.dto.ConversationSummaryDto;
 import com.terabia.terabia.dto.EnvoiMessageDto;
 import com.terabia.terabia.dto.MessageResponseDto;
 import com.terabia.terabia.models.Conversation;
@@ -43,40 +44,37 @@ public class ChatController {
      */
     @PostMapping("/message")
     public ResponseEntity<MessageResponseDto> envoyerMessage(
-            @RequestParam Integer idExpediteur,
-            @RequestParam Integer idDestinataire,
-            @RequestBody @Valid EnvoiMessageDto dto
-    ) {
+            @RequestHeader("Authorization") String token,
+            @RequestParam Long idConversation,
+            @RequestBody @Valid EnvoiMessageDto dto) {
 
-        // Force sync: idDestinataire must come from URL
-        dto.setIdDestinataire(idDestinataire);
+        if (token.startsWith("Bearer ")) {
+            token = token.substring(7);
+        }
+        Integer idExpediteur = Integer.parseInt(jwtService.getUserIdFromToken(token));
 
-        Message messageBrut = chatService.envoyerMessage(idExpediteur, dto);
+        Message messageBrut = chatService.envoyerMessage(idExpediteur, idConversation, dto);
 
         MessageResponseDto response = ChatMapper.toDto(messageBrut);
-
         return ResponseEntity.ok(response);
     }
+
 
     /**
      * RECUPERER MES CONVERSATIONS
      */
     @GetMapping("/conversations")
-    public ResponseEntity<List<Conversation>> getMesConversations(
-            @RequestHeader("Authorization") String token
-    ) {
+    public List<ConversationSummaryDto> getConversations(
+            @RequestHeader("Authorization") String token) {
 
         if (token.startsWith("Bearer ")) {
             token = token.substring(7);
         }
 
-        String idUserStr = jwtService.getUserIdFromToken(token);
-        Integer idUser = Integer.parseInt(idUserStr);
+        Integer userId = Integer.parseInt(jwtService.getUserIdFromToken(token));
 
-        List<Conversation> conversations = chatService.getMesConversations(idUser);
-        return ResponseEntity.ok(conversations);
+        return chatService.getConversationsForUser(userId);
     }
-
     /**
      * RECUPERER L'HISTORIQUE D'UNE CONVERSATION
      */

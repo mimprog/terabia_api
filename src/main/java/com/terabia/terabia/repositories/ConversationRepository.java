@@ -3,6 +3,7 @@ package com.terabia.terabia.repositories;
 import java.util.List;
 import java.util.Optional;
 
+import com.terabia.terabia.dto.ConversationSummaryDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -47,5 +48,17 @@ public interface ConversationRepository extends JpaRepository<Conversation, Long
             @Param("userId1") Integer userId1,
             @Param("userId2") Integer userId2
     );
+
+    @Query("""
+           select new com.terabia.terabia.dto.ConversationSummaryDto(
+               c.idConversation,
+               p.firstname,
+               p.lastname
+           )
+           from Conversation c
+           join c.participants p
+           where :userId in (select u.id from c.participants u) and p.id <> :userId
+           """)
+    List<ConversationSummaryDto> findConversationsForUser(@Param("userId") Integer userId);
 
 }

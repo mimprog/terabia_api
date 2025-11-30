@@ -19,7 +19,9 @@ public class CorsConfig {
 
         config.setAllowedOrigins(List.of(
                 "https://terabia.onrender.com",    // frontend (Render)
-                "http://localhost:3000"            // local dev
+                "http://localhost:3000" ,
+                "http://localhost:8080",
+                "http://localhost:8000"// local dev
         ));
 
         config.setAllowedHeaders(List.of("*"));
