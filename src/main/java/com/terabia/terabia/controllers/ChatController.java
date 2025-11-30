@@ -103,14 +103,17 @@ public class ChatController {
             token = token.substring(7);
         }
 
+        // Get idExpediteur from JWT
         Integer idExpediteur = Integer.parseInt(jwtService.getUserIdFromToken(token));
 
-        Conversation conv = chatService.startConversation(idExpediteur, idDestinataire);
-
-        Map<String, Object> response = new HashMap<>();
-        response.put("idConversation", conv.getIdConversation());
+        // Call the service method
+        Map<String, Object> response = chatService.startConversation(idExpediteur, idDestinataire);
         return ResponseEntity.ok(response);
     }
+
+
+
+
 
 
 }

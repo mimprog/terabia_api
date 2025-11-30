@@ -14,7 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ChatService {
@@ -82,21 +84,27 @@ public class ChatService {
     }
 
     @Transactional
-    public Conversation startConversation(Integer idUser1, Integer idUser2) {
+    public Map<String, Object> startConversation(Integer idUser1, Integer idUser2) {
 
+        // Fetch users from DB
         User user1 = utilisateurRepository.findById(idUser1)
                 .orElseThrow(() -> new RuntimeException("User1 not found"));
-
         User user2 = utilisateurRepository.findById(idUser2)
                 .orElseThrow(() -> new RuntimeException("User2 not found"));
 
-        // check existing conversation
-        return conversationRepository
+        // Find or create conversation
+        Conversation conversation = conversationRepository
                 .findConversationEntreDeuxUsers(idUser1, idUser2)
                 .orElseGet(() -> {
                     Conversation newConv = new Conversation();
                     newConv.setParticipants(Arrays.asList(user1, user2));
                     return conversationRepository.save(newConv);
                 });
+
+        // Return only what frontend needs
+        Map<String, Object> response = new HashMap<>();
+        response.put("idConversation", conversation.getIdConversation());
+        return response;
     }
+
 }
