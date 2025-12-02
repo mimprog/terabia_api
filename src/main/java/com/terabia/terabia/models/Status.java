@@ -12,7 +12,6 @@ public enum Status {
     RETIRED("Retired");            // Product has been retired, possibly for older versions of a product line
 
     private final String label;
-
     Status(String label) {
         this.label = label;
     }

@@ -1,6 +1,7 @@
 package com.terabia.terabia.controllers;
 
 import com.terabia.terabia.chat.ChatService;
+import com.terabia.terabia.dto.UpdateUserDto;
 import com.terabia.terabia.models.User;
 import com.terabia.terabia.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,13 @@ public class UserController {
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable Integer id) {
         userService.deleteUser(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity < ? > updateUser(@PathVariable Integer id, @RequestBody UpdateUserDto updateUserDto) {
+        UpdateUserDto updateUserDto1 =  userService.updateUser(id, updateUserDto);
+        return ResponseEntity.ok(updateUserDto1);
+
     }
 
 }

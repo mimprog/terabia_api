@@ -44,14 +44,14 @@ public class ChatController {
      */
     @PostMapping("/message")
     public ResponseEntity<MessageResponseDto> envoyerMessage(
-            @RequestHeader("Authorization") String token,
+            @RequestParam("idExpediteur") Integer idExpediteur,
             @RequestParam Long idConversation,
             @RequestBody @Valid EnvoiMessageDto dto) {
 
-        if (token.startsWith("Bearer ")) {
+        /*if (token.startsWith("Bearer ")) {
             token = token.substring(7);
         }
-        Integer idExpediteur = Integer.parseInt(jwtService.getUserIdFromToken(token));
+        Integer idExpediteur = Integer.parseInt(jwtService.getUserIdFromToken(token));*/
 
         Message messageBrut = chatService.envoyerMessage(idExpediteur, idConversation, dto);
 
@@ -65,15 +65,15 @@ public class ChatController {
      */
     @GetMapping("/conversations")
     public List<ConversationSummaryDto> getConversations(
-            @RequestHeader("Authorization") String token) {
+            @RequestParam("idExpediteur") Integer idExpediteur) {
 
-        if (token.startsWith("Bearer ")) {
+        /*if (token.startsWith("Bearer ")) {
             token = token.substring(7);
         }
 
-        Integer userId = Integer.parseInt(jwtService.getUserIdFromToken(token));
+        Integer userId = Integer.parseInt(jwtService.getUserIdFromToken(token));*/
 
-        return chatService.getConversationsForUser(userId);
+        return chatService.getConversationsForUser(idExpediteur);
     }
     /**
      * RECUPERER L'HISTORIQUE D'UNE CONVERSATION
@@ -94,22 +94,22 @@ public class ChatController {
 
     @PostMapping("/conversation/start")
     public ResponseEntity<Map<String, Object>> startConversation(
-            @RequestHeader("Authorization") String token,
+            @RequestParam("idExpediteur") Integer idExpediteur,
             @RequestParam("idDestinataire") Integer idDestinataire
-    ) {
-        if (token.startsWith("Bearer ")) {
+    )
+
+    {
+        /*if (token.startsWith("Bearer ")) {
             token = token.substring(7);
         }
 
         // Get idExpediteur from JWT
-        Integer idExpediteur = Integer.parseInt(jwtService.getUserIdFromToken(token));
+        Integer idExpediteur = Integer.parseInt(jwtService.getUserIdFromToken(token));*/
 
         // Call the service method
         Map<String, Object> response = chatService.startConversation(idExpediteur, idDestinataire);
         return ResponseEntity.ok(response);
     }
-
-
 
 
 

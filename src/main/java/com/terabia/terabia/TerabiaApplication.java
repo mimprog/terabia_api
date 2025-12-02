@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 public class TerabiaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TerabiaApplication.class, args);
+	SpringApplication.run(TerabiaApplication.class, args);
 	}
 	@Autowired
 	private UserService userService;

@@ -43,6 +43,7 @@
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/controllers/ProductController.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/controllers/StatusController.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/config/JwtService.java
+/home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/dto/UpdateUserDto.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/controllers/StockController.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/dto/ConversationSummaryDto.java
 /home/mimche/Desktop/terabia_real/terabia-api/src/main/java/com/terabia/terabia/models/Supplier.java

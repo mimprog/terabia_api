@@ -32,6 +32,7 @@ com/terabia/terabia/controllers/StockController.class
 com/terabia/terabia/services/CustomerService.class
 com/terabia/terabia/dto/EnvoiMessageDto.class
 com/terabia/terabia/auth/RegisterRequest$RegisterRequestBuilder.class
+com/terabia/terabia/dto/UpdateUserDto.class
 com/terabia/terabia/services/OrderService.class
 com/terabia/terabia/auth/AuthResponse.class
 com/terabia/terabia/dto/MessageResponseDto.class
