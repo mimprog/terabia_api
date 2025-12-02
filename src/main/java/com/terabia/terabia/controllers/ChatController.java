@@ -48,11 +48,6 @@ public class ChatController {
             @RequestParam Long idConversation,
             @RequestBody @Valid EnvoiMessageDto dto) {
 
-        /*if (token.startsWith("Bearer ")) {
-            token = token.substring(7);
-        }
-        Integer idExpediteur = Integer.parseInt(jwtService.getUserIdFromToken(token));*/
-
         Message messageBrut = chatService.envoyerMessage(idExpediteur, idConversation, dto);
 
         MessageResponseDto response = ChatMapper.toDto(messageBrut);
@@ -65,15 +60,10 @@ public class ChatController {
      */
     @GetMapping("/conversations")
     public List<ConversationSummaryDto> getConversations(
-            @RequestParam("idExpediteur") Integer idExpediteur) {
+            @RequestParam("idExpediteur") Integer idUser) {
 
-        /*if (token.startsWith("Bearer ")) {
-            token = token.substring(7);
-        }
 
-        Integer userId = Integer.parseInt(jwtService.getUserIdFromToken(token));*/
-
-        return chatService.getConversationsForUser(idExpediteur);
+        return chatService.getConversationsForUser(idUser);
     }
     /**
      * RECUPERER L'HISTORIQUE D'UNE CONVERSATION
@@ -99,12 +89,13 @@ public class ChatController {
     )
 
     {
-        /*if (token.startsWith("Bearer ")) {
-            token = token.substring(7);
+        // Consider adding validation
+        if (idExpediteur == null || idDestinataire == null) {
+            return ResponseEntity.badRequest().body(
+                    Map.of("error", "Both user IDs are required")
+            );
         }
-
-        // Get idExpediteur from JWT
-        Integer idExpediteur = Integer.parseInt(jwtService.getUserIdFromToken(token));*/
+        System.out.println("idExpediteur" + idExpediteur + "IDdESTINAire:  " + idDestinataire );
 
         // Call the service method
         Map<String, Object> response = chatService.startConversation(idExpediteur, idDestinataire);

@@ -37,6 +37,7 @@ public class UserService {
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
     }
 
+
     public UpdateUserDto updateUser (Integer id, UpdateUserDto updateUserDto) {
         Optional<User> optionalUser = userRepository.findById(id);
         if (optionalUser.isPresent()) {
